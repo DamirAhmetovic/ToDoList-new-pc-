@@ -19,8 +19,8 @@ function DBconnect()
 function GetList($id)  //<--
 {
     $conn = DBconnect();
-    $query = $conn->prepare("SELECT * FROM lists WHERE id=:id");
-    $query->bindParam(":list_id", $list_id);
+    $query = $conn->prepare("SELECT * FROM lists WHERE list_id=:list_id " );
+    $query->bindParam(":list_id", $id);
     $query->execute();
     $result = $query->fetch();
     return $result;
@@ -139,10 +139,10 @@ function GetSpecificTask($data)
     return $result;
 }
 
-function GetTasksForLists($data)
+function GetTasksForLists($data, $task_order)
 {
     $conn = DBconnect();
-    $query = $conn->prepare("SELECT * FROM tasks WHERE task_list_id = :task_id ORDER BY task_status");
+    $query = $conn->prepare("SELECT * FROM tasks WHERE task_list_id = :task_id " . $task_order);
     $query->bindParam(":task_id", $data);
     $query->execute();
     $result = $query->fetchAll();
