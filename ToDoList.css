@@ -1,0 +1,10 @@
+.list_name {
+  display: inline-grid;
+  width: 24%;
+  text-align: center;
+  border-width: 3px;
+  border-color: red;
+  border-style: solid;
+  height: 400px;
+  margin-bottom: 20px;
+}
